@@ -1,0 +1,48 @@
+salesmAN_ID         Name          City            Comission
+5001	              Amit	        Mathura	        0.15
+5002	              Pavan	        Mathura	        0.13
+5005	              Naman	        Agra	          0.11
+5006	              Shyam	        Noida	          0.14
+5003	              Ram	          Noida	          0.12
+5007	              Gaurav	      Agra	          0.13
+
+
+
+02/06/2023
+
+
+-- retrieve all salesman details without any repeats.
+select * from salesman group by id;
+
+-- display name and city of salesman who belongs to the city of mathura.
+select Name, City from salesman where city = "Mathura";
+
+-- show all saleman name where firstname like pavan
+ select Name from salesman where name like 'pavan%';
+
+-- display the name of salesman who belong to city mathura and agra and not have a commision above 0.12
+select Name from salesman where (city="Mathura" or city = "Agra") and Commision <=0.12;
+
+-- find those salesman with all information who get the commision with a range of 0.12 and 0.14
+select * from salesman where Commision BETWEEN 0.12 and 0.14;
+
+-- find those salesman whose name containing the first character is a and 3rd character is i.
+select * from salesman where name like 'a_i%';
+
+
+
+
+03/06/2023
+
+-- find all he details of the salesman where city name not started with letter p and arrange the list as the most recent comes first thn by name in order
+SELECT * from salesmandata WHERE city not in ('P%') and salesmanId = (select min(salesmanid) from salesmandata ORDER BY Name) ;
+
+
+-- find the name and comission who is cheapest from the salesman table
+select Name,Comission FROM salesmandata where Comission = (select min(Comission) from salesmandata);
+
+-- find the detil of salesman who does no get comission except null 
+select * from salesmandata where comission =0 ;
+
+-- find the highest comission for each of the cities of the salesman;
+select city,max(comission)  from salesmandata GROUP BY city;
