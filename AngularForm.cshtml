@@ -1,0 +1,263 @@
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RegistrationPageUsingBootstrap</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="~/Scripts/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <style>
+        .container-fluid {
+            width: 100%;
+        }
+
+        body {
+            /*background-image: url('../../Content/bg-registration-form-5.jpg');*/
+/*            overflow: hidden;
+*/            background: #9053c7;
+            background: -webkit-linear-gradient(-135deg,#c850c0,#4158d0);
+            background: -o-linear-gradient(-135deg,#c850c0,#4158d0);
+            background: -moz-linear-gradient(-135deg,#c850c0,#4158d0);
+            background: linear-gradient(-135deg,#c850c0,#4158d0);
+            /*background-image: url('../../Content/1.jpeg');*/
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .container {
+            width: 600px;
+            height: 800px;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+            border-radius: 5px;
+            background-color: white;
+            backdrop-filter:blur(20px);
+            box-shadow:0 0 30px rgba(0,0,0,.5);
+        }
+
+          .container:hover {
+                box-shadow: 0 24px 48px 0 rgba(0,0,0,0.2);
+            }
+
+        /*.input-group span {
+            color: black;
+            font-weight: bold;
+            display: inline-flex;
+        }*/
+    </style>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="validateCtrl">
+        @*<div class="container-fluid">*@
+            <div class="container p-4 mt-3 mb-4 text-black" mx-auto>
+                
+                <form class="myForm" id="myForm" action="#" onsubmit="validateForm" name="myForm">
+                    <h3 class="card-title">Registration Form</h3><br>
+                    <hr style="height:4px ">
+                    <div class="mb-1 mt-1 row">
+                        <div class="col " id="input-group">
+                            <label for=" text" class="form-label">
+                                @*First Name*@
+                            </label>
+                            <span ng-show="myForm.$submitted || myForm.fname.$dirty">
+                                <span class="error errortext" style="color:red; font-size:smaller; font-weight:bold" ng-show="myForm.fname.$error.required"><br>First Name Required</span>
+                                <span class="error errortext" style="color:red; font-size:smaller; font-weight:bold" ng-show="myForm.fname.$error.pattern"><br>First Name cannot be Number</span>
+                                @*<span class="error validtext" ng-show="myForm.fname.$valid"><br>Status: valid</span>*@
+                            </span>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fa-solid fa-user" id="fname-error"></i></span>
+                                <input type="text" placeholder="First Name" ng-model="fname" name="fname" class="form-control" ng-pattern="fnameRegex" required>
+
+                            </div>
+                        </div>
+    <div class="col">
+        <label for=" text" class="form-label">
+                        @*Last Name*@
+                        </label>
+        <span ng-show="myForm.$submitted || myForm.lname.$dirty">
+            <span class="error errortext" style="color:red; font-size:smaller;font-weight:bold" ng-show="myForm.lname.$error.required"><br>Last Name Required</span>
+            <span class="error errortext" style="color: red; font-size: smaller;font-weight:bold" ng-show="myForm.lname.$error.pattern"><br>Last Name cannot be Number</span>
+                                @*<span class="error validtext" ng-show="myForm.lname.$valid"><br>Status: valid</span>*@
+                                </span>
+            <div class="input-group">
+                <span class="input-group-text"><i class="fa-solid fa-user" id="lname-error"></i></span>
+                <input type="text" placeholder="Last Name" ng-model="lname" name="lname" ng-disabled="myForm.fname.$error.pattern || !fname" class="form-control" ng-pattern="fnameRegex" required>
+            </div>
+        </div>
+    </div>
+
+                        <!--<div class="mb-3 mt-3 row">
+                            <div class="col" id="input-group">
+                                <label for="text" class="form-label">-->
+                                @*First Name*@
+                                <!--</label>
+
+    <span ng-show="myForm.$submitted || myForm.fname.$dirty">
+        <span class="error errortext" style="color:red; font-size:smaller; font-weight:bold" ng-show="myForm.fname.$error.required"><br>First Name Required</span>
+        <span class="error errortext" style="color:red; font-size:smaller; font-weight:bold" ng-show="myForm.fname.$error.pattern"><br>First Name cannot be Number</span>-->
+                                @*<span class="error validtext" ng-show="myForm.fname.$valid"><br>Status: valid</span>*@
+                                <!--</span>
+        <div class="input-group">
+            <span class="input-group-text"><i class="fa-solid fa-user" id="fname-error"></i></span>
+            <input type="text" placeholder="First Name" ng-model="fname" name="fname" class="form-control" ng-pattern="fnameRegex" required>
+        </div>
+
+    </div>
+    <div class="col">
+        <label for="text" class="form-label">-->
+                                @*Last Name*@
+                                <!--</label>
+    <span ng-show="myForm.$submitted || myForm.lname.$dirty">
+        <span class="error errortext" style="color:red; font-size:smaller;font-weight:bold" ng-show="myForm.lname.$error.required"><br>Last Name Required</span>
+        <span class="error errortext" style="color: red; font-size: smaller;font-weight:bold" ng-show="myForm.lname.$error.pattern"><br>Last Name cannot be Number</span>-->
+                                @*<span class="error validtext" ng-show="myForm.lname.$valid"><br>Status: valid</span>*@
+                                <!--</span>
+            <div class="input-group">
+                <span class="input-group-text"><i class="fa-solid fa-user" id="lname-error"></i></span>
+                <input type="text" placeholder="Last Name" ng-model="lname" name="lname" ng-disabled="myForm.fname.$error.pattern || !fname" class="form-control" ng-pattern="fnameRegex" required>
+            </div>
+        </div>
+    </div>-->
+
+
+
+
+
+                                <div class="mb-3">
+                                    <label for=" text" class="form-label">@*DOB*@</label><span>
+                                        <span ng-show="myForm.$submitted || myForm.mydate.$dirty">
+                                            <span class="error errortext" style="color:red; font-size:smaller;font-weight:bold" ng-show="myForm.mydate.$error.required">Date of Birth Required</span>
+                                            <span class="error errortext" style="color:red; font-size:smaller;font-weight:bold" ng-show="myForm.mydate.$error.pattern">Ensure that DOB falls in between "1900-01-01" and "2023-06-01". Required</span>
+                                            @*<span class="error validtext" style="color:red; font-size:smaller;font-weight:bold" ng-show="myForm.mydate.$valid"><br>Status: valid</span>*@
+                                        </span>
+                                    </span>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fa-solid fa-calendar-days" id="dob-error"></i></span>
+                                        <input type="date" class="form-control" ng-model="mydate" min="1900-01-01" max="2023-06-01" ng-pattern="dobRegex" ng-disabled="myForm.fname.$error.pattern || !fname ||
+                                                                                               myForm.lname.$error.pattern || !lname" name="mydate" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="text" class="form-label">@*Gender*@</label>
+                                    <span ng-show="myForm.$submitted || myForm.gender.$dirty">
+                                        <span class="error errortext" style="color:red; font-size:smaller;font-weight:bold" ng-show="myForm.gender.$error.required"><br> Gender Required</span>
+                                        @*<span class="error validtext" style="color:red; font-size:smaller;font-weight:bold" ng-show="myForm.gender.$valid"><br>Status: valid</span>*@
+                                    </span>
+
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fa-solid fa-neuter" id="gender-error"></i></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <div class="form-check form-check-inline">
+                                            <input type="radio" name="gender" ng-model="gender" ng-disabled="myForm.mydate.$error.pattern || !mydate ||
+                                                                                               myForm.lname.$error.pattern || !lname " ng-value="&quot;Male&quot;" required="">
+                                            <label class="form-check-label" for="inlineRadio1">Male</label>
+                                        </div>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <div class="form-check form-check-inline">
+                                            <input type="radio" name="gender" ng-model="gender" ng-disabled="myForm.mydate.$error.pattern || !mydate ||
+                                                                                               myForm.lname.$error.pattern || !lname " ng-value="&quot;Female&quot;" required="">
+                                            <label class="form-check-label" for="inlineRadio2">Female</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3 ">
+                                    <label for="Courses" class="form-label">@*Courses*@</label>
+                                    <span ng-show="myForm.$submitted || myForm.course.$dirty">
+                                        <span class="error errortext" style="color:red; font-size:smaller;font-weight:bold" ng-show="myForm.course.$error.required"> Course Required</span>
+                                        @*<span class="error validtext" ng-show="myForm.course.$valid"><br><i class="fa fa-exclamation-circle"></i> Status: valid</span>*@
+                                    </span>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fa-sharp fa-solid fa-graduation-cap" id="courses-error"></i></span>
+                                        <select name="course" class="form-control" ng-model="course" ng-disabled="myForm.gender.$error.pattern || !gender||
+                                                                                               myForm.mydate.$error.pattern || !mydate" required="">
+                                            <option value="">Courses</option>
+                                            <option>B.Tech</option>
+                                            <option>BCA</option>
+                                            <option>B.Com</option>
+                                            <option>BArch</option>
+                                            <option>M.Tech</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="mb-3 ">
+                                    <label for=" text" class="form-label">@*Phone No.*@</label>
+                                    <span ng-show="myForm.$submitted || myForm.phone.$dirty">
+                                        <span class="error errortext" style="color:red; font-size:smaller;font-weight:bold" ng-show="myForm.phone.$error.required"><br>Phone Number Required</span>
+                                        <span class="error errortext" style="color:red; font-size:smaller;font-weight:bold" ng-show="((myForm.phone.$error.minlength || myForm.phone.$error.maxlength || myForm.phone.$error.pattern) &amp;&amp; myForm.phone.$dirty)"><br>Phone Number Should be 10 digits</span>
+                                        @*<span class="error validtext" ng-show="myForm.phone.$valid"><br>Status: valid</span>*@
+                                    </span>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fa-solid fa-phone" id="phno-error"></i></span>
+                                        <input type="number" name="phone" class="form-control" oninput=" this.value = this.value.replace(/[a-zA-Z+\-*\/.e]/g,'')" ng-model="phone" ng-pattern="phoneRegex" ng-disabled="myForm.gender.$error.pattern || !gender||
+                                                                                               myForm.course.$error.pattern || !course" ng-minlength="10" ng-maxlength="10" required="" placeholder="Phone Number:">
+                                    </div>
+                                </div>
+                                <div class="mb-3 ">
+                                    <label for=" text" class="form-label">@*Email*@</label>
+                                    <span ng-show="myForm.$submitted || myForm.mail.$dirty">
+                                        <span class="error errortext" style="color:red; font-size:smaller;font-weight:bold" ng-show="myForm.mail.$error.required"><br>Email Required  </span>
+                                        <span class="error errortext" style="color:red; font-size:smaller;font-weight:bold" ng-show="myForm.mail.$error.pattern"><br>Email Syntax: name@gmail.com  </span>
+                                        @*<span class="error validtext" ng-show="myForm.mail.$valid"><br><i class="fa fa-exclamation-circle"></i> Status: valid</span>*@
+                                    </span>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fa fa-envelope" aria-hidden="true" id="email-error"></i></span>
+                                        <input type="email" name="mail" class="form-control" ng-model="mail" ng-disabled="myForm.course.$error.pattern || !course||
+                                                                                               myForm.phone.$error.pattern || !phone" ng-pattern="emailRegex" required="" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for=" text" class="form-label">@*Password*@</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <small>
+                                        <span ng-show="myForm.$submitted || myForm.password.$dirty">
+                                            <span class="error errortext" style="color:red; font-size:smaller;font-weight:bold" ng-show="myForm.password.$error.required"><br> Password Required</span>
+                                            <span class="error errortext" style="color:red; font-size:smaller;font-weight:bold" ng-show="myForm.password.$error.pattern"><br>Contains atleast1 Uppercase,<br> lowercase, Number & digit</span>
+                                            @*<span class="error validtext" ng-show="myForm.password.$valid"><br><i class="fa fa-exclamation-circle"></i> Status: valid</span>*@
+                                        </span>
+                                    </small>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fa-solid fa-lock" id="password-error"></i></span>
+                                        <input type="password" name="password" class="form-control" ng-model="password" ng-disabled="myForm.phone.$error.pattern || !phone||
+                                                                                               myForm.mail.$error.pattern || !mail" ng-pattern="passwordRegex" required="" placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <label class="form-check-label">
+                                        <span ng-show="myForm.$submitted || myForm.check.$dirty">
+                                            <span class="error errortext" style="color:red; font-size:smaller;font-weight:bold" ng-show="myForm.check.$error.required"><br><i class="fa fa-exclamation-circle"></i> This needs to be checked first</span>
+                                            @*<span class="error validtext" ng-show="myForm.check.$valid"><br><i class="fa fa-exclamation-circle"></i> Status: valid</span>*@
+                                        </span>
+                                        <input type="checkbox" name="check" ng-model="check" ng-disabled="myForm.mail.$error.pattern || !mail||
+                                                                                               myForm.password.$error.pattern || !password" required="" /> I accept all the&nbsp;&nbsp;<a href="#">terms and Conditions</a>.
+                                    </label><br><br>
+                                </div>
+                                <div class="col-md-12 column" style=" display:flex; justify-content:center;margin-bottom:10px;">
+                                    <button type="submit" class="btn btn-success" ng-model="submit" ng-disabled="myForm.check.$error.pattern || !check||
+                                                                                               myForm.mail.$error.pattern || !mail" required="" />Submit</button>
+                                </div>
+
+</form>
+            </div>
+        @*</div>*@
+    </div>
+
+</body>
+</html>
+<script>
+
+    var app = angular.module("myApp", []);
+    app.controller("validateCtrl", function ($scope) {
+        $scope.emailRegex = /^[a-zA-z]+[a-zA-Z0-9]+[@@]{1}gmail.com$/;
+        $scope.fnameRegex = /^[A-Za-z]*$/;
+        $scope.mobileRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\]?[0-9]{3}[-\s\]?[0-9]{4,5}$/;
+        $scope.passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@@#$%^&*()\-_=+{};:,<.>]).+$/;
+        $scope.dobRegex = /^(19[0-9]{2}|20[0-2][0-9]|2023)-(0[1-9]|1[0-2])-([0-2][1-9]|3[01])$/;
+        $scope.phoneRegex = /^(?!.*[e.])(.*)$/;
+    });
+
+</script>
